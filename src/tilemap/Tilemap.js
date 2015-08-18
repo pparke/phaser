@@ -100,7 +100,7 @@ Phaser.Tilemap = function (game, key, tileWidth, tileHeight, width, height) {
     * @property {array} tilesets - An array of Tilesets.
     */
     this.tilesets = data.tilesets;
-    
+
     /**
     * @property {array} imagecollections - An array of Image Collections.
     */
@@ -399,10 +399,13 @@ Phaser.Tilemap.prototype = {
         }
 
         var sprite;
-        var found = false;
+        var found;
 
         for (var i = 0, len = this.objects[name].length; i < len; i++)
         {
+
+            found = false;
+
             if (typeof this.objects[name][i].gid !== 'undefined' && typeof gid === 'number')
             {
                 if (this.objects[name][i].gid === gid)
@@ -463,7 +466,7 @@ Phaser.Tilemap.prototype = {
     /**
     * Creates a Sprite for every object matching the given tile indexes in the map data.
     * You can specify the group that the Sprite will be created in. If none is given it will be created in the World.
-    * You can optional specify if the tile will be replaced with another after the Sprite is created. This is useful if you want to lay down special 
+    * You can optional specify if the tile will be replaced with another after the Sprite is created. This is useful if you want to lay down special
     * tiles in a level that are converted to Sprites, but want to replace the tile itself with a floor tile or similar once converted.
     *
     * @method Phaser.Tilemap#createFromTiles
@@ -827,7 +830,7 @@ Phaser.Tilemap.prototype = {
 
         if (collides === undefined) { collides = true; }
         if (recalculate === undefined) { recalculate = true; }
-        
+
         layer = this.getLayer(layer);
 
         if (typeof indexes === 'number')
@@ -867,7 +870,7 @@ Phaser.Tilemap.prototype = {
 
         if (collides === undefined) { collides = true; }
         if (recalculate === undefined) { recalculate = true; }
-        
+
         layer = this.getLayer(layer);
 
         if (start > stop)
@@ -902,7 +905,7 @@ Phaser.Tilemap.prototype = {
 
         if (collides === undefined) { collides = true; }
         if (recalculate === undefined) { recalculate = true; }
-        
+
         layer = this.getLayer(layer);
 
         //  Collide everything, except the IDs given in the indexes array
@@ -1016,7 +1019,7 @@ Phaser.Tilemap.prototype = {
     },
 
     /**
-    * Turn off/on the recalculation of faces for tile or collision updates. 
+    * Turn off/on the recalculation of faces for tile or collision updates.
     * `setPreventRecalculate(true)` puts recalculation on hold while `setPreventRecalculate(false)` recalculates all the changed layers.
     *
     * @method Phaser.Tilemap#setPreventRecalculate
@@ -1058,7 +1061,7 @@ Phaser.Tilemap.prototype = {
             this.needToRecalculate[layer] = true;
             return;
         }
-        
+
         var above = null;
         var below = null;
         var left = null;
@@ -1534,7 +1537,7 @@ Phaser.Tilemap.prototype = {
         if (y === undefined) { y = 0; }
         if (width === undefined) { width = this.layers[layer].width; }
         if (height === undefined) { height = this.layers[layer].height; }
-        
+
         if (x < 0)
         {
             x = 0;
